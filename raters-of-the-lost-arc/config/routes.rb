@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   post "users" => "users#create"
 
-  get "users/:id" => "users#show"
+  get "users/:id" => "users#show", as: "user"
 
   root 'films#index'
   get 'films' => 'films#index'
@@ -17,6 +17,6 @@ Rails.application.routes.draw do
 
   post "sessions" => "sessions#create"
 
-  delete "sessions/:id" => "sessions#destroy"
+  delete "sessions" => "sessions#destroy"
 
 end
