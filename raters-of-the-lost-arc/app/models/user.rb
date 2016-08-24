@@ -1,6 +1,6 @@
 require 'bcrypt'
 
-Class User < ActiveRecord::Base
+class User < ActiveRecord::Base
 
   include BCrypt
 
@@ -13,12 +13,9 @@ Class User < ActiveRecord::Base
     self.password_hash = @password
   end
 
-  def authenticate
+  def self.authenticate
     @user = User.find_by_username(params[:username])
-    if @user.password == params[:password]
-      return true
-    else
-      return false
-    end
+    @user.password == params[:password]
+
   end
 end

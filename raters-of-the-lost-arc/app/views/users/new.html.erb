@@ -1,0 +1,14 @@
+<h1>Registration</h1>
+
+<%= form_for @user, url: users_path  do |f| %>
+  <%= label_tag :username %>
+  <%= f.text_field :username %>
+  <br>
+  <%= label_tag :email %>
+  <%= f.text_field :email %>
+  <br>
+  <%= label_tag :password %>
+  <%= f.password_field :password %>
+  <br>
+  <%= f.submit %>
+<% end %>
