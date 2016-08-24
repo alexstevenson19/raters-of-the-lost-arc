@@ -11,10 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20160824184154) do
+
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
 
   create_table "users", force: :cascade do |t|
     t.string   "username",      null: false
@@ -22,6 +26,15 @@ ActiveRecord::Schema.define(version: 20160824184154) do
     t.string   "password_hash", null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+
+  create_table "films", force: :cascade do |t|
+    t.integer  "genre_id",     null: false
+    t.string   "title",        null: false
+    t.integer  "release_year", null: false
+    t.text     "description",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+
   end
 
 end
