@@ -1,0 +1,5 @@
+%h2 All films
+
+- @films.each do |film|
+  %ul
+    %li= link_to film.title, film_path(film)

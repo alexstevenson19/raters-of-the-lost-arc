@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Film.delete_all
+
+films = 10.times.map do
+  Film.create!(genre_id: 1,
+              title: Faker::Space.galaxy + " " + Faker::Superhero.name,
+              release_year: Time.now.year - rand(1..50),
+              description: Faker::Hipster.paragraph(2))
+end
