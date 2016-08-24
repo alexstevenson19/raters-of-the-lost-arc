@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20160824184154) do
     t.string   "password_hash", null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
 
   create_table "films", force: :cascade do |t|
     t.integer  "genre_id",     null: false
