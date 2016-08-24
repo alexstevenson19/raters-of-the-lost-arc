@@ -8,6 +8,16 @@
 </head>
 <body>
 
+  <nav id="nav-bar">
+    <%= link_to "Home", "/" %>
+    <% if session[:user_id] %>
+      <%= link_to "Logout", "/sessions", method: :delete %>
+      <%= link_to "Hey #{current_user.username}!", user_path(session[:user_id]) %>
+    <% else %>
+      <%= link_to "Register", users_new_path %>
+      <%= link_to "Login", "/sessions/new" %>
+    <% end %>
+  </nav>
 <%= yield %>
 
 </body>
