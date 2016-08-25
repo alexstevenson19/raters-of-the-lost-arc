@@ -1,0 +1,5 @@
+%h2 All Genres
+
+- @genres.each do |genre|
+  %ul
+    %li= link_to genre.name, genre_path(genre)

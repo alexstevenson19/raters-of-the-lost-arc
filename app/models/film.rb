@@ -1,5 +1,5 @@
 class Film < ActiveRecord::Base
-  # belongs_to :genre
+  belongs_to :genre
   # has_many :roles
   # has_many :actors, through: :roles
   # has_many :reviews, as: :reviewable
