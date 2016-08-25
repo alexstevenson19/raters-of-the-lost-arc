@@ -13,7 +13,13 @@ end
 
 genre_ids = [1, 2, 3, 4]
 films.each do |film|
-  2.times {film.film_genres << FilmGenre.create!(genre_id: genre_ids.sample, film_id: film.id)}
+
+  2.times do
+    a = FilmGenre.create!(genre_id: genre_ids.sample, film_id: film.id)
+    p a
+    p "!!!!!!!!!!"
+    film.film_genres << a
+  end
 end
 
 User.delete_all
