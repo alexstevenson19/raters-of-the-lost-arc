@@ -12,7 +12,7 @@
 <div class="container">
 
   <nav id="nav-bar">
-    <ul>
+    <ul id="login-nav">
       <li><%= link_to "Home", "/" %></li>
       <% if session[:user_id] %>
         <li><%= link_to "Logout", "/sessions", method: :delete %></li>
@@ -27,7 +27,7 @@
       <img id="cats" src="cats-at-movies-gray.png">
     </div>
 
-    <ul>
+    <ul id="other-nav">
       <li>Reviews</li>
       <li>Films</li>
       <li>Genres</li>
