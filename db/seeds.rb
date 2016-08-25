@@ -8,12 +8,17 @@ genres = genre_names.each.map do |genre|
 end
 
 films = 10.times.map do
-  Film.create!(title: Faker::Space.galaxy + " " + Faker::Superhero.name,release_year: Time.now.year - rand(1..50), description: Faker::Hipster.paragraph(2))
+  Film.new(title: Faker::Space.galaxy + " " + Faker::Superhero.name,release_year: Time.now.year - rand(1..50), description: Faker::Hipster.paragraph(2))
 end
 
 genre_ids = [1, 2, 3, 4]
 films.each do |film|
-  2.times {film.film_genres << FilmGenre.create!(genre_id: genre_ids.sample, film_id: film.id)}
+
+  2.times do
+    a = FilmGenre.create!(genre_id: genre_ids.sample, film_id: film.id)
+    film.film_genres << a
+  end
+  film.save
 end
 
 User.delete_all
