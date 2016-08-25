@@ -13,7 +13,10 @@ films = 10.times.map do
 end
 
 User.delete_all
-
 User.create!(username: "dave", email: "dave@davecorp.com", password: "dave")
 User.create!(username: "bob", email: "bob@bob.bob", password: "password")
 User.create!(username: "jen", email: "jen@jen.jen", password: "password")
+
+
+Comment.delete_all
+Comment.create!(commenter_id: rand(1..User.all.count), commentable_type: "film", commentable_id: rand(1..Film.all.count), text: Faker::Hipster.sentence)
