@@ -10,4 +10,8 @@ class Film < ActiveRecord::Base
 
   validates :title, :release_year, :description, presence: true
   validates_format_of :release_year, with: /\A\d{4}\z/, on: :save
+
+  def calculate_rating
+
+  end
 end
