@@ -20,3 +20,7 @@
   position: absolute;
   left: 200px;
 }
+
+#movie-cats {
+  content:url(http://cats-at-movies-gray.png);
+}
