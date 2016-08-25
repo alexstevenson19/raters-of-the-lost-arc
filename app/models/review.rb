@@ -6,6 +6,8 @@ class Review < ActiveRecord::Base
   has_one :genre, through: :film
   has_many :votes
   validates :headline, :content, :stars, :reviewer_id, presence: true
+  has_many :comments, as: :commentable
+  has_many :commenters, through: :comments
 
   def stars_pretty
     star_string = ""
