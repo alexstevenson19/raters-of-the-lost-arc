@@ -6,13 +6,14 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?, :ensure_login!
 
   def current_user
-    @current_user ||= User.find(session[:user_id])
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
+
   def logged_in?
-    self.current_user != nil
+    current_user != nil
   end
 
   def ensure_login!
-    redirect_to "sessions/new" unless logged_in?
+    redirect_to "/sessions/new" unless logged_in?
   end
 end
