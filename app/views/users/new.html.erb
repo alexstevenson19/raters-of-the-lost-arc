@@ -1,5 +1,7 @@
 <h1>Registration</h1>
 
+<%= render partial: "/user_errors" %>
+
 <%= form_for @user, url: users_path  do |f| %>
   <%= label_tag :username %>
   <%= f.text_field :username %>
@@ -10,5 +12,5 @@
   <%= label_tag :password %>
   <%= f.password_field :password %>
   <br>
-  <%= f.submit %>
+  <%= f.submit "Register" %>
 <% end %>
