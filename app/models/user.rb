@@ -34,4 +34,8 @@ class User < ActiveRecord::Base
   def verified?
     self.vote_total >= 5
   end
+
+   def voted?(review_id)
+    self.votes.where(review_id: review_id).count > 0
+  end
 end

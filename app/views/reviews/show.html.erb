@@ -3,6 +3,8 @@
 <p><%= @review.content %><strong> by <%= link_to @review.reviewer.username, user_path(@review.reviewer) %></strong></p>
 <p><%= link_to "go back to #{@review.film.title}", film_path(@review.film) %></p> <br>
 
+
+
 <%= form_for :vote, url: create_vote_path do |f| %>
 <%= f.submit "This review was helpful!" %>
 <% end %>
