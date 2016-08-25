@@ -17,6 +17,12 @@ ActiveRecord::Schema.define(version: 20160825161212) do
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
+    t.integer  "commenter_id",     null: false
+    t.string   "commentable_type", null: false
+    t.string   "commentable_id",   null: false
+    t.text     "body",             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "film_genres", force: :cascade do |t|
@@ -33,7 +39,9 @@ ActiveRecord::Schema.define(version: 20160825161212) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "name", null: false
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "reviews", force: :cascade do |t|

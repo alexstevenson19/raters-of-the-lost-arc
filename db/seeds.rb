@@ -14,7 +14,9 @@ films.each do |film|
   2.times {film.film_genres << FilmGenre.create!(genre_id: genres.sample.id, film_id: film.id)}
 end
 
+User.delete_all
 user_ids = [1, 2, 3]
+
 reviews = 20.times.map do
   Review.create!(reviewer_id: user_ids.sample,
                 reviewable_type: 'Film',
@@ -27,3 +29,7 @@ end
 User.create!(username: "dave", email: "dave@davecorp.com", password: "dave")
 User.create!(username: "bob", email: "bob@bob.bob", password: "password")
 User.create!(username: "jen", email: "jen@jen.jen", password: "password")
+
+
+Comment.delete_all
+Comment.create!(commenter_id: rand(1..User.all.count), commentable_type: "film", commentable_id: rand(1..Film.all.count), body: Faker::Hipster.sentence)

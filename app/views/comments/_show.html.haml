@@ -1,0 +1,2 @@
+/ should show username, date, body
+%p= "#{User.find(comment.commenter_id).username} said \"#{comment.body}\" on #{comment.created_at.to_date}"
