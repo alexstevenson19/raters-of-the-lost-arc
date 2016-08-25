@@ -3,8 +3,7 @@
 <head>
   <title>RatersOfTheLostArc</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag    "/stylesheets/normalize" %>
-  <%= stylesheet_link_tag    "/stylesheets/styles" %>
+  <%= stylesheet_link_tag    "/normalize" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -29,8 +28,8 @@
 
     <ul id="other-nav">
       <li>Reviews</li>
-      <li>Films</li>
-      <li>Genres</li>
+      <li><%= link_to "Films", films_path %></li>
+      <li><%= link_to "Genres", genres_path %></li>
       <li>Actors</li>
     </ul>
 
