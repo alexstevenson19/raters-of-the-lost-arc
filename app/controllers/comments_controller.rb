@@ -24,7 +24,12 @@ class CommentsController < ApplicationController
     type = comment.commentable_type
     id = comment.commentable_id
     comment.destroy
-    redirect_to "/#{type.downcase}s/#{id}"
+    if type == "Review"
+      film_id = Review.find(id).film_id
+      redirect_to "/films/#{film_id}"
+    else
+      redirect_to "/#{type.downcase}s/#{id}"
+    end
   end
 
   private
