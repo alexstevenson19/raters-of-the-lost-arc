@@ -19,10 +19,15 @@ Rails.application.routes.draw do
   post "sessions" => "sessions#create"
 
   delete "sessions" => "sessions#destroy"
-  get "films/:id/reviews/new"  => "reviews#new", as: 'reviews_new'
-  post "films/:id/reviews" => 'reviews#create', as: 'reviews'
-  get "reviews/:id" => 'reviews#show', as: "review"
 
+  # Review
+  get "films/:id/reviews/new"  => "reviews#new", as: 'reviews_new'
+
+  post "films/:id/reviews" => 'reviews#create', as: 'reviews'
+
+  get "films/:film_id/reviews/:id" => 'reviews#show', as: "review"
+
+  # Genres
   get 'genres' => 'genres#index'
 
   get 'genres/:id' => 'genres#show', as: 'genre'
