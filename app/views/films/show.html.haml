@@ -6,9 +6,6 @@
 
 %h3= "Reviews for #{@film.title}"
 -if @film.reviews
-  %ul
-    -@film.reviews.each do |review|
-      %li= link_to review.headline, review_path(review)
 
   = render partial: 'reviews/review_list', locals: { film: @film }
 

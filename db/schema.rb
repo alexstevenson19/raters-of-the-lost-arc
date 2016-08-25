@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 20160825161212) do
   end
 
   create_table "films", force: :cascade do |t|
-    t.integer  "genre_id",     null: false
     t.string   "title",        null: false
     t.integer  "release_year", null: false
     t.text     "description",  null: false
