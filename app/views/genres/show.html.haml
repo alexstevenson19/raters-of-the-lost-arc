@@ -1,0 +1,4 @@
+%h2= "#{@genre.name} Films"
+%ul
+  -@genre.films.each do |film|
+    %li= link_to film.title, film_path(film)
