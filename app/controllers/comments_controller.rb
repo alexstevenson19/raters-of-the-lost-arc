@@ -9,9 +9,12 @@ class CommentsController < ApplicationController
   end
 
   def create
+    p "in create method"
+    p comment_params
     @comment = Comment.new(comment_params)
+    @comment.commenter = User.find(session[:user_id])
     if @comment.save
-      redirect to "/#{@comment.commentable_type}/#{@comment.commentable_id}"
+      redirect_to "/#{@comment.commentable_type}/#{@comment.commentable_id}"
     else
       @errors = @comment.errors.full_messages
       render 'new'
@@ -22,11 +25,9 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    commenter_id = session[:user_id]
-    p params
-    commentable_type = (params[:commentable_type])
-    commentable_id = (params[:commentable_id])
-    params.require(:comment).permit(:body)
+    # params[:comment][:commenter_id] = session[:user_id]
+    params.require(:comment).permit(:body, :commentable_type, :commentable_id, :commenter_id)
+    # return params[:comment] - NO because rails is looking for something from permit
   end
 
 end

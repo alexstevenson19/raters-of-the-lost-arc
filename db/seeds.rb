@@ -19,4 +19,4 @@ User.create!(username: "jen", email: "jen@jen.jen", password: "password")
 
 
 Comment.delete_all
-Comment.create!(commenter_id: rand(1..User.all.count), commentable_type: "film", commentable_id: rand(1..Film.all.count), text: Faker::Hipster.sentence)
+Comment.create!(commenter_id: rand(1..User.all.count), commentable_type: "film", commentable_id: rand(1..Film.all.count), body: Faker::Hipster.sentence)
