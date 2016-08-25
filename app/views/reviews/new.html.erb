@@ -1,0 +1,41 @@
+
+<%= form_for @review do |f| %>
+  <%if @review.errors.any? %>
+    <div id="errors">
+      <h2><%=pluralize(@review.errors.count, "error")  %> prevented this review from saving</h2>
+      <ul>
+        <% @review.errors.full_messages.each do |message| %>
+        <li>
+          <%= message %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+  <p>
+    <%= f.label :headline %>
+    <br>
+    <%= f.text_field :headline %>
+  </p>
+  <p>
+    <%= f.radio_button(:stars, "1") %>
+    <%= f.label(:stars_1, "1 stars") %>
+    <%= f.radio_button(:stars, "2") %>
+    <%= f.label(:stars_2, "2 stars") %>
+    <%= f.radio_button(:stars, "3") %>
+    <%= f.label(:stars_3, "3 stars") %>
+    <%= f.radio_button(:stars, "4") %>
+    <%= f.label(:stars_4, "4 stars") %>
+    <%= f.radio_button(:stars, "5") %>
+    <%= f.label(:stars_5, "5 stars") %>
+  </p>
+  <p>
+    <%= f.label :content %>
+    <br>
+    <%= f.text_area :content %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
