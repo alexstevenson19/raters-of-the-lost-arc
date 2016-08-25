@@ -1,4 +1,6 @@
 %h2 Login
+
+= render partial: "/user_errors"
 = form_for :user, url: "/sessions" do |f|
   = f.label :username
   %br
@@ -8,5 +10,5 @@
   %br
   = f.password_field :password
   %br
-  = f.submit
+  = f.submit "Login"
 

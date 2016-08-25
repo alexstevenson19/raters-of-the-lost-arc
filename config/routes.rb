@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  root 'films#index'
 
   get "users" => "users#index"
 
@@ -9,8 +10,8 @@ Rails.application.routes.draw do
 
   get "users/:id" => "users#show", as: "user"
 
-  root 'films#index'
   get 'films' => 'films#index'
+
   get 'films/:id' => 'films#show', as: 'film'
 
   get "sessions/new" => "sessions#new"
@@ -21,5 +22,9 @@ Rails.application.routes.draw do
   get "films/:id/reviews/new"  => "reviews#new", as: 'reviews_new'
   post "films/:id/reviews" => 'reviews#create', as: 'reviews'
   get "reviews/:id" => 'reviews#show', as: "review"
+
+  get 'genres' => 'genres#index'
+
+  get 'genres/:id' => 'genres#show', as: 'genre'
 
 end
