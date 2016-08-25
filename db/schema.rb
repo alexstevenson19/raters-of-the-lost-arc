@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(version: 20160824195617) do
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.integer  "reviwer_id"
+    t.string   "reviewable_type"
+    t.integer  "reviewable_id"
+    t.integer  "stars",           null: false
+    t.string   "headline",        null: false
+    t.text     "content",         null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "users", force: :cascade do |t|
