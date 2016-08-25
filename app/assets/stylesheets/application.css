@@ -4,8 +4,8 @@
           box-sizing: border-box;
 /*    border: 1px solid red;*/
     font-family: Verdana;
-
 }
+
 .container {
   position: relative;
   width: 960px;
@@ -39,8 +39,7 @@
   color: #f5f5f0;
 }
 
-#login-nav a {
-
+nav a
   color: #f5f5f0;
 }
 
