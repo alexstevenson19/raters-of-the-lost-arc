@@ -2,6 +2,10 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
 
+  has_many :reviews, foreign_key: :reviewer_id
+  has_many :reviewed_films, through: :reviews, source: :film
+
+
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
