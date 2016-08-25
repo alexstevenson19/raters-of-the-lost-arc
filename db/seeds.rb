@@ -14,3 +14,10 @@ films = 10.times.map do
               release_year: Time.now.year - rand(1..50),
               description: Faker::Hipster.paragraph(2))
 end
+
+User.delete_all
+
+User.create!(username: "dave", email: "dave@davecorp.com", password: "dave")
+User.create!(username: "bob", email: "bob@bob.bob", password: "password")
+User.create!(username: "jen", email: "jen@jen.jen", password: "password")
+

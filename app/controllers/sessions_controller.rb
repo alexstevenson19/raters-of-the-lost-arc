@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to "/users/#{@user.id}"
     else
-      # @errors = @user.errors.display_full_messages
+      @errors = ["username or password incorrect"]
       render :new
     end
   end
