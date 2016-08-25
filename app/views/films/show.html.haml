@@ -9,6 +9,6 @@
   %ul
     -@film.reviews.each do |review|
       %li= link_to review.headline, review_path(review)
--else
-  %p No reviews yet.  Be the first to write one!
+
 %p= link_to "Write a review for #{@film.title}", reviews_new_path
+%p= link_to "Comment on #{@film.title}", comments_new_path(commentable_type: "film", commentable_id: @film.id)

@@ -27,4 +27,8 @@ Rails.application.routes.draw do
 
   get 'genres/:id' => 'genres#show', as: 'genre'
 
+  get '/comments/new' => 'comments#new', as: 'comments_new'
+
+  post 'comments' => 'comments#create', as: 'comments'
+
 end

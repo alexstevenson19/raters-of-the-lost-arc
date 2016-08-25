@@ -1,17 +1,17 @@
 class CommentsController < ApplicationController
 
   def new
+    @commentable_id = params[:commentable_id]
+    @commentable_type = params[:commentable_type]
     if !session[:user_id]
-      redirect "/sessions/new"
-    else
-      @comment = Comment.new
+      redirect_to "/sessions/new"
     end
   end
 
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
-      render 'show'
+      redirect to "/#{@comment.commentable_type}/#{@comment.commentable_id}"
     else
       @errors = @comment.errors.full_messages
       render 'new'
@@ -23,9 +23,10 @@ class CommentsController < ApplicationController
   private
   def comment_params
     commenter_id = session[:user_id]
-    commentable_type = params[:type]
-    commentable_id :
-    params.require(:article).permit(:category_id, :title, :body, :price, :email, :tags_string)
+    p params
+    commentable_type = (params[:commentable_type])
+    commentable_id = (params[:commentable_id])
+    params.require(:comment).permit(:body)
   end
 
 end
