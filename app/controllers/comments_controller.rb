@@ -19,7 +19,13 @@ class CommentsController < ApplicationController
     end
   end
 
-  # delete
+  def destroy
+    comment = Comment.find(params[:id])
+    type = comment.commentable_type
+    id = comment.commentable_id
+    comment.destroy
+    redirect_to "/#{type.downcase}s/#{id}"
+  end
 
   private
   def comment_params
