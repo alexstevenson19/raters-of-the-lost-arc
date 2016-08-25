@@ -10,6 +10,8 @@
     -@film.reviews.each do |review|
       %li= link_to review.headline, review_path(review)
 
+  = render partial: 'reviews/review_list', locals: { film: @film }
+
 %p= link_to "Write a review for #{@film.title}", reviews_new_path
 %p= link_to "Comment on #{@film.title}", comments_new_path(commentable_type: "Film", commentable_id: @film.id)
 - @film.comments.each do |comment|
