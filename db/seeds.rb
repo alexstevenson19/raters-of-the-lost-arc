@@ -6,10 +6,10 @@ end
 
 Film.delete_all
 films = 10.times.map do
-  Film.create!(genre_id: rand(1..genre_names.length),
-              title: Faker::Space.galaxy + " " + Faker::Superhero.name,
-              release_year: Time.now.year - rand(1..50),
-              description: Faker::Hipster.paragraph(2))
+  Film.create!(title: Faker::Space.galaxy + " " + Faker::Superhero.name,release_year: Time.now.year - rand(1..50), description: Faker::Hipster.paragraph(2))
+end
+films.each do |film|
+  2.times {film.film_genres << FilmGenre.create!(genre_id: genres.sample.id, film_id: film.id)}
 end
 
 User.delete_all
