@@ -1,7 +1,7 @@
 class CreateReviews < ActiveRecord::Migration
   def change
     create_table :reviews do |t|
-      t.integer :reviwer_id
+      t.integer :reviewer_id
       t.string :reviewable_type
       t.integer :reviewable_id
       t.integer :stars, null: false

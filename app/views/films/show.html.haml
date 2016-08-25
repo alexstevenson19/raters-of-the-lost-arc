@@ -1,1 +1,14 @@
 %h2= @film.title
+%ul
+  / %li= "Genre: #{@film.genre}"
+  %li= "Released in #{@film.release_year}"
+  %li= @film.description
+
+%h3= "Reviews for #{@film.title}"
+-if @film.reviews
+  %ul
+    -@film.reviews.each do |review|
+      %li= link_to review.headline, review_path(review)
+-else
+  %p No reviews yet.  Be the first to write one!
+%p= link_to "Write a review for #{@film.title}", reviews_new_path

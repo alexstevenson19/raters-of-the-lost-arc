@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20160824195617) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer  "reviwer_id"
+    t.integer  "reviewer_id"
     t.string   "reviewable_type"
     t.integer  "reviewable_id"
     t.integer  "stars",           null: false

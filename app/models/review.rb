@@ -4,4 +4,6 @@ class Review < ActiveRecord::Base
   has_one :genre, through: :film
   validates :headline, :content, :stars, presence: true
 
+
+
 end
