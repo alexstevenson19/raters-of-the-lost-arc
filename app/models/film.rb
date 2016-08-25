@@ -12,6 +12,11 @@ class Film < ActiveRecord::Base
   validates_format_of :release_year, with: /\A\d{4}\z/, on: :save
 
   def calculate_rating
-
+    sum = 0
+    self.reviews.each do |review|
+      sum += review.stars
+    end
+    average = sum/self.reviews.count
+    return average.floor
   end
 end

@@ -1,4 +1,6 @@
 %h2= @film.title
+%h3= "Rating: #{@film.calculate_rating} stars"
+
 %ul
   / %li= "Genre: #{@film.genre}"
   %li= "Released in #{@film.release_year}"
