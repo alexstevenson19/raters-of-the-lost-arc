@@ -20,4 +20,12 @@ class CommentsController < ApplicationController
 
   # delete
 
+  private
+  def comment_params
+    commenter_id = session[:user_id]
+    commentable_type = params[:type]
+    commentable_id :
+    params.require(:article).permit(:category_id, :title, :body, :price, :email, :tags_string)
+  end
+
 end
