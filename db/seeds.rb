@@ -1,10 +1,12 @@
 Genre.delete_all
+User.delete_all
+Film.delete_all
+
 genre_names = ["Sci-Fi", "Comedy", "Documentary", "Action"]
 genres = genre_names.each.map do |genre|
   Genre.create!(name: genre)
 end
 
-Film.delete_all
 films = 10.times.map do
   Film.create!(genre_id: rand(1..genre_names.length),
               title: Faker::Space.galaxy + " " + Faker::Superhero.name,
@@ -12,7 +14,15 @@ films = 10.times.map do
               description: Faker::Hipster.paragraph(2))
 end
 
-User.delete_all
+user_ids = [1, 2, 3]
+reviews = 20.times.map do
+  Review.create!(reviewer_id: user_ids.sample,
+                reviewable_type: 'Film',
+                reviewable_id: user_ids.sample,
+                stars: rand(1..5),
+                headline: Faker::Hipster.sentence(3),
+                content: Faker::Hipster.paragraphs.join(" "))
+end
 
 User.create!(username: "dave", email: "dave@davecorp.com", password: "dave")
 User.create!(username: "bob", email: "bob@bob.bob", password: "password")
