@@ -8,6 +8,7 @@ class SearchesController < ApplicationController
     search_array.concat(search_array.map{|str| str.downcase})
     search_array.concat(search_array.map{|str| str.upcase})
     search_array.concat(search_array.map{|str| str.capitalize})
+    search_array = search_array.uniq
     @search_return = []
     if params[:search_type] == "Films"
       search_array.each do |search_string|
@@ -22,7 +23,7 @@ class SearchesController < ApplicationController
         @search_return.concat(Review.all.find_all {|review| review.reviewer.username.include?(search_string)})
       end
     end
-    @search_return
+  @search_return = @search_return.uniq {|obj| obj.id}
   end
 
 end
