@@ -3,10 +3,18 @@
 <p><%= @review.content %><strong> by <%= link_to @review.reviewer.username, user_path(@review.reviewer) %></strong></p>
 <p><%= link_to "go back to #{@review.film.title}", film_path(@review.film) %></p> <br>
 
+<% if @errors %>
+ <p>You can't vote until you sign in.</p>
+<% end %>
 
-
-<%= form_for :vote, url: create_vote_path do |f| %>
-<%= f.submit "This review was helpful!" %>
+<% if current_user && @author.id == current_user.id  %>
+  <div></div>
+<% elsif current_user && !current_user.voted?(@review.id) %>
+  <%= form_for :vote, url: create_vote_path do |f| %>
+  <%= f.submit "This review was helpful!" %>
+  <% end %>
+<% elsif current_user %>
+  <div>You found this review helpful.</div>
 <% end %>
 
 
