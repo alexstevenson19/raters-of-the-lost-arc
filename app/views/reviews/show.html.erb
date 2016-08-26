@@ -1,27 +1,31 @@
-<h2>Review for <%= link_to @review.film.title, film_path(@review.film) %></h2>
-<h3><%= @review.headline %></h3>
+<h2><%= link_to @review.film.title, film_path(@review.film) %></h2>
+<h3 class="headline"><%= @review.headline %></h3>
 <p><%= @review.content %><strong> by <%= link_to @review.reviewer.username, user_path(@review.reviewer) %></strong></p>
-<p><%= link_to "go back to #{@review.film.title}", film_path(@review.film) %></p> <br>
 
 <% if @errors %>
- <p>You can't vote until you sign in.</p>
+ <p>Log in to vote!</p>
 <% end %>
 
+<ul id="film_menu">
 <% if current_user && @author.id == current_user.id  %>
-  <div></div>
+  <li></li>
 <% elsif current_user && !current_user.voted?(@review.id) %>
-  <%= form_for :vote, url: create_vote_path do |f| %>
-  <%= f.submit "This review was helpful!" %>
-  <% end %>
+  <li>
+    <%= form_for :vote, url: create_vote_path do |f| %>
+      <%= f.submit "Like this review!" %>
+    <% end %>
+  </li>
 <% elsif current_user %>
-  <div>You found this review helpful.</div>
+  <li class="red">You found this review helpful!</li>
 <% end %>
-
-
-
-<p> <%= link_to "Comment on #{@review.headline}", comments_new_path(commentable_type: "Review", commentable_id: @review.id) %> </p>
+  <li class="blue">
+    <%= link_to "Leave a comment", comments_new_path(commentable_type: "Review", commentable_id: @review.id) %>
+  </li>
+  <li class="back blue">
+    <%= link_to "back to film", film_path(@review.film) %>
+    <li>
+</ul>
 
 <% @review.comments.each do |comment| %>
   <%= render '/comments/show', comment: comment %>
 <%end%>
-

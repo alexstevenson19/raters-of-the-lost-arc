@@ -1,8 +1,7 @@
-<ul>
+<ul class="xit">
   <% film.reviews.each do |review| %>
     <li>
       <%= render partial: 'reviews/review_details', locals: { film: film, review: review } %>
     </li>
   <% end %>
 </ul>
-
