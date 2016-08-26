@@ -12,7 +12,12 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.commenter = User.find(session[:user_id])
     if @comment.save
-      redirect_to "/#{@comment.commentable_type.downcase}s/#{@comment.commentable_id}"
+      if @comment.commentable_type== "Film"
+        redirect_to "/#{@comment.commentable_type.downcase}s/#{@comment.commentable_id}"
+      else
+        film_id = Review.find(@comment.commentable_id).reviewable_id
+        redirect_to "/films/#{film_id}/reviews/#{@comment.commentable_id}"
+      end
     else
       @errors = @comment.errors.full_messages
       render 'new'
@@ -24,9 +29,12 @@ class CommentsController < ApplicationController
     type = comment.commentable_type
     id = comment.commentable_id
     comment.destroy
+    p type
+    p "!!!!!!!!!!!!!!!!!!!!"
     if type == "Review"
-      film_id = Review.find(id).film_id
-      redirect_to "/films/#{film_id}"
+      p "type does indeed equal review"
+      reviewable_id = Review.find(id).reviewable_id
+      redirect_to "/films/#{reviewable_id}"
     else
       redirect_to "/#{type.downcase}s/#{id}"
     end
