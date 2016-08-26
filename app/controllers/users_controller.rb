@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      render 'show'
+      redirect_to '/'
     else
       @errors = @user.errors.full_messages
       render 'new'
@@ -19,7 +19,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    if logged_in? && current_user.id == params[:id]
+    p current_user
+    p logged_in?
+    if logged_in? && current_user.id == params[:id].to_i
       @user = User.find(params[:id])
       render :show
     else
