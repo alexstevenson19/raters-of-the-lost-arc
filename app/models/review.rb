@@ -4,6 +4,7 @@ class Review < ActiveRecord::Base
   belongs_to :film, foreign_key: :reviewable_id
 
   has_one :genre, through: :film
+  has_many :votes
   validates :headline, :content, :stars, :reviewer_id, presence: true
   has_many :comments, as: :commentable
   has_many :commenters, through: :comments

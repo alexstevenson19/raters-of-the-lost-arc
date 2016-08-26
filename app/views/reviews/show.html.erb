@@ -1,7 +1,15 @@
 <h2>Review for <%= link_to @review.film.title, film_path(@review.film) %></h2>
 <h3><%= @review.headline %></h3>
 <p><%= @review.content %><strong> by <%= link_to @review.reviewer.username, user_path(@review.reviewer) %></strong></p>
-<p><%= link_to "go back to #{@review.film.title}", film_path(@review.film) %></p>
+<p><%= link_to "go back to #{@review.film.title}", film_path(@review.film) %></p> <br>
+
+
+
+<%= form_for :vote, url: create_vote_path do |f| %>
+<%= f.submit "This review was helpful!" %>
+<% end %>
+
+
 
 <p> <%= link_to "Comment on #{@review.headline}", comments_new_path(commentable_type: "Film", commentable_id: @review.id) %> </p>
 
