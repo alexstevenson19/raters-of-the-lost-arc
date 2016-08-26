@@ -38,6 +38,11 @@ Rails.application.routes.draw do
 
   delete "comments/:id" => "comments#destroy", as: 'comments_destroy'
 
+
+  post '/search' => "searches#show", as: 'search'
+
   post 'reviews/:id/votes' => "reviews#create_vote", as: 'create_vote'
+
   get 'reviews' => "reviews#index", as: "review_all"
+
 end
