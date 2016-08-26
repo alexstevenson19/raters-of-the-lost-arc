@@ -35,6 +35,7 @@ class Film < ActiveRecord::Base
     return "No reviews so" if self.reviews.count < 1
     star_num  = average_rating
     star_string = ""
+
     star_num.floor.times {star_string << Emoji.find_by_alias("star").raw}
     star_string
   end

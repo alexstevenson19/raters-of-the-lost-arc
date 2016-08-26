@@ -1,4 +1,8 @@
-<h3><%= link_to review.headline, review_path(film, review) %></h3>
-<p><%= review.stars_pretty %></p>
-<p><%= review.short_content %><%= link_to 'see more', review_path(film, review) %></p>
+<div><h3>Film: <%= link_to review.film.title, film_path(review.film) %></h3>
+  <ol>
+<h4>  <%= link_to review.headline, review_path(film, review) %></h4>
+<%= review.stars_pretty %> <br>
+<%= review.short_content %><%= link_to 'see more', review_path(film, review) %>
+<br>
+</div>
 
