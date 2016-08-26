@@ -9,5 +9,6 @@ class FilmsController < ApplicationController
 
   def main_page
     @top = top_movies
+    @reviews = recent_reviews
   end
 end
