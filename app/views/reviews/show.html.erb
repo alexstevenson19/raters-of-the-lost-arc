@@ -1,7 +1,7 @@
 <h2>Review for <%= link_to @review.film.title, film_path(@review.film) %></h2>
 <h3><%= @review.headline %></h3>
-<p><%= @review.content %><strong> by <%= link_to @review.reviewer.username, user_path(@review.reviewer) %></strong></p>
-<p><%= link_to "go back to #{@review.film.title}", film_path(@review.film) %></p> <br>
+<p><%= @review.content %><strong> by <%= link_to @review.reviewer.username_fancy, user_path(@review.reviewer) %></strong></p>
+ <br>
 
 <% if @errors %>
  <p>You can't vote until you sign in.</p>
