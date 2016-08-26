@@ -32,7 +32,7 @@
         <h1 class="main">Raters<br>of the<br>lost arc</h1>
         <ul id="login">
           <% if session[:user_id] %>
-            <li><%= link_to "Logout", "/sessions", method: :delete %></li>
+            <li><%= link_to "Logout", logout_path, { :method => :delete } %></li>
             <li><%= link_to "Hey #{current_user.username}!", user_path(session[:user_id]) %></li>
           <% else %>
             <li><%= link_to "Register", users_new_path %></li>
