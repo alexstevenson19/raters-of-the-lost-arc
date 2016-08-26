@@ -15,8 +15,8 @@ module SearchesHelper
       return_films.concat(Film.all.find_all {|film| film.description.include?(search_string)})
       return_films.concat(Film.all.find_all {|film| film.release_year.to_s.include?(search_string)})
       end
-    return_films = return_films.uniq {|obj| obj.id}
-    return_films
+    # return_films = return_films.uniq {|obj| obj.id}
+    return order_by_hits(return_films)
   end
 
   def review_search(string_array)
@@ -26,11 +26,16 @@ module SearchesHelper
       return_reviews.concat(Review.all.find_all {|review| review.content.include?(search_string)})
       return_reviews.concat(Review.all.find_all {|review| review.reviewer.username.include?(search_string)})
       end
-    return_reviews = return_reviews.uniq {|obj| obj.id}
-    return_reviews
+    # return_reviews = return_reviews.uniq {|obj| obj.id}
+    return order_by_hits(return_reviews)
   end
 
-  def order_by_hits
+  def order_by_hits(object_array)
+    counts = Hash.new 0
+    object_array.each do |obj|
+      counts[obj] += 1
+    end
+    return (Hash[counts.sort_by{|k, v| v}.reverse])
   end
 
 end
