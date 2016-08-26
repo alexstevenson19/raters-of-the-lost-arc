@@ -2,14 +2,14 @@
   %table
     - @search_return.each do |review, relevance|
       %tr
-        %td= "Relevance: #{relevance}"
+        %td= "Relevance: #{relevance} "
         %td
           %li= link_to review.headline, review_path(Film.find(review.reviewable_id), review)
 -elsif @search_return.keys[0].class.name == "Film"
   %table
     - @search_return.each do |film, relevance|
       %tr
-        %td= "Relevance: #{relevance}"
+        %td= "Relevance: #{relevance} "
         %td
           %li= link_to film.title, film_path(film)
 -else
