@@ -1,15 +1,61 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+* {
+    -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+/*    border: 1px solid red;*/
+    font-family: Verdana;
+}
+
+.container {
+  position: relative;
+  width: 960px;
+}
+
+#nav-bar {
+  position: absolute;
+  left: 0px;
+  width: 200px;
+  height: 600px;
+  background-color: #b8b894;
+}
+
+#main-body {
+  position: absolute;
+  left: 200px;
+}
+
+#cats {
+  max-width: 200px;
+}
+
+#login-nav {
+  padding: 10px;
+  background-color: #6b6b47;
+}
+
+#other-nav {
+  padding: 10px;
+  background-color: #6b6b47;
+  color: #f5f5f0;
+}
+
+nav a
+  color: #f5f5f0;
+}
+
+#main-body {
+  height: 600px;
+  padding: 40px;
+  width: 700px;
+  background-color: #d6d6c2;
+  color: #cc0000;
+
+}
+
+#main-body a {
+  color: #0f0f0a
+
+}
+li {
+  list-style: none;
+}
