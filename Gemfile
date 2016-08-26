@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-
+#emoji
+gem 'gemoji'
 # Additional gems
 gem 'faker', '1.6.6'
 gem 'haml-rails'

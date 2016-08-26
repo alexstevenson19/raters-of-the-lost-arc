@@ -11,12 +11,12 @@ class Review < ActiveRecord::Base
 
   def stars_pretty
     star_string = ""
-    self.stars.times { star_string << "*" }
+    self.stars.times { star_string << Emoji.find_by_alias("star").raw }
     return star_string
   end
 
   def short_content
-    pizza = self.content[0..200].gsub(/\s\w+$/, '...')
+    pizza = self.content[0..150].gsub(/\s\w+$/, '...')
     p pizza
   end
 
