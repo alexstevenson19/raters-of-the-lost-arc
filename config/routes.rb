@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'films#index'
+  root 'films#main_page'
 
   get "users" => "users#index"
 
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   post "sessions" => "sessions#create"
 
-  delete "sessions" => "sessions#destroy"
+  delete "sessions" => "sessions#destroy", as: 'logout'
 
   # Review
   get "films/:id/reviews/new"  => "reviews#new", as: 'reviews_new'
@@ -38,8 +38,9 @@ Rails.application.routes.draw do
 
   delete "comments/:id" => "comments#destroy", as: 'comments_destroy'
 
-  post 'reviews/:id/votes' => "votes#create", as: 'create_vote'
 
   post '/search' => "searches#show", as: 'search'
+
+  post 'reviews/:id/votes' => "reviews#create_vote", as: 'create_vote'
 
 end

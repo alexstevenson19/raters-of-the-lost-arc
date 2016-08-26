@@ -12,14 +12,15 @@ class Film < ActiveRecord::Base
   validates :title, :release_year, :description, presence: true
   validates_format_of :release_year, with: /\A\d{4}\z/, on: :save
 
-  def calculate_rating
-    sum = 0    
+  def average_rating
+    sum = 0
+    return 0 if self.reviews.count < 1
     self.reviews.each do |review|
         sum += review.stars
-    end   
+    end
    sum.to_f/self.reviews.count.to_f
   end
-  
+
   def half_star(average)
     return nil if self.reviews.count < 1
     remainder = (average - average.floor.to_f).to_f
@@ -35,19 +36,19 @@ class Film < ActiveRecord::Base
   end
 
   def star_display
-    return "No ratings" if self.reviews.count < 1
-    star_num  = calculate_rating
+    return "No " if self.reviews.count < 1
+    star_num  = average_rating
     star_string = ""
     star_num.floor.times {star_string << Emoji.find_by_alias("star").raw}
     star_string
   end
 
   def display_quarter_star
-    if calculate_rating == 1
-      return "#{half_star(calculate_rating)} star"
+    if average_rating == 1
+      return "#{half_star(average_rating)} star"
     else
-      return "#{half_star(calculate_rating)} stars"
-    end  
+      return "#{half_star(average_rating)} stars"
+    end
   end
 
 end
