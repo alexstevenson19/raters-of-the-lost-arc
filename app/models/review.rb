@@ -16,7 +16,7 @@ class Review < ActiveRecord::Base
   end
 
   def short_content
-    pizza = self.content[0..200].gsub(/\s\w+$/, '...')
+    pizza = self.content[0..150].gsub(/\s\w+$/, '...')
     p pizza
   end
 
