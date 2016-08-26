@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'films#index'
+  root 'films#main_page'
 
   get "users" => "users#index"
 
