@@ -35,7 +35,7 @@
         <ul id="login">
           <% if session[:user_id] %>
             <li><%= link_to "Logout", logout_path, { :method => :delete } %></li>
-            <li><%= link_to "Hey #{current_user.username}!", user_path(session[:user_id]) %></li>
+            <li><%= link_to "#{current_user.username_fancy_nav}", user_path(session[:user_id]) %></li>
           <% else %>
             <li><%= link_to "Register", users_new_path %></li>
             <li><%= link_to "Login", "/sessions/new" %></li>

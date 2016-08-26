@@ -38,4 +38,20 @@ class User < ActiveRecord::Base
    def voted?(review_id)
     self.votes.where(review_id: review_id).count > 0
   end
+
+  def username_fancy
+    if self.verified?
+      self.username + " ( #{Emoji.find_by_alias("movie_camera").raw}" +  " --  Trusted Reviewer )"
+    else
+      self.username
+    end
+  end
+
+  def username_fancy_nav
+    if self.verified?
+      "#{Emoji.find_by_alias("movie_camera").raw} HEY " + self.username + "!"
+    else
+      "Hey " + self.username + "!"
+    end
+  end
 end
