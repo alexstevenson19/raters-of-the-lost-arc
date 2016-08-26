@@ -26,17 +26,13 @@ class Film < ActiveRecord::Base
     remainder = (average - average.floor.to_f).to_f
     if remainder < 0.25
       return ""
-    elsif remainder < 0.5
-      return "1/4"
-    elsif remainder < 0.75
-      return "2/4"
-    else
-      return "3/4"
+    elsif remainder > 0.5
+      return Emoji.find_by_alias("star").raw
     end
   end
 
   def star_display
-    return "No " if self.reviews.count < 1
+    return "No reviews so" if self.reviews.count < 1
     star_num  = average_rating
     star_string = ""
     star_num.floor.times {star_string << Emoji.find_by_alias("star").raw}

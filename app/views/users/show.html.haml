@@ -1,1 +1,8 @@
 %h2= "Hey #{@user.username}"
+
+- if @user.reviews.count > 0
+  %h3 Your reviews
+  %ul
+  - @user.reviews.each do |review|
+    %li= link_to review.headline, review_path(review.film.id, review.id)
+

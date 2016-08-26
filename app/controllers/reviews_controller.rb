@@ -1,5 +1,9 @@
 class ReviewsController < ApplicationController
 
+  def index
+    @reviews = recent_reviews
+  end
+
   def new
     ensure_login!
     @review = Review.new
