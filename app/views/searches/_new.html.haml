@@ -1,0 +1,7 @@
+%form{action: "/search", method: "post"}
+  %label Search
+  %select{name: "search_type"}
+    %option{value: "Films"} Films
+    %option{value: "Reviews"} Reviews
+  %input{type: "text", name: "search_string"}
+  %input{type: "submit", value: "Go"}
