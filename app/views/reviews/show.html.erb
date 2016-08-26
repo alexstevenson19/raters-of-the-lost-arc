@@ -1,5 +1,6 @@
 <h2>Review for <%= link_to @review.film.title, film_path(@review.film) %></h2>
 <h3><%= @review.headline %></h3>
+<p><%= @review.stars_pretty %></p>
 <p><%= @review.content %><strong> by <%= link_to @review.reviewer.username, user_path(@review.reviewer) %></strong></p>
 <p><%= link_to "go back to #{@review.film.title}", film_path(@review.film) %></p> <br>
 
