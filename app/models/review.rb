@@ -11,8 +11,16 @@ class Review < ActiveRecord::Base
 
   def stars_pretty
     star_string = ""
+    return Emoji.find_by_alias("poop").raw if self.stars == 1
+    return  five_cats if self.stars == 5
     self.stars.times { star_string << Emoji.find_by_alias("star").raw }
     return star_string
+  end
+
+  def five_cats
+    string = ""
+    5.times {string << Emoji.find_by_alias("smiley_cat").raw}
+    string
   end
 
   def short_content

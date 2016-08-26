@@ -1,6 +1,6 @@
 <h2><%= link_to @review.film.title, film_path(@review.film) %></h2>
 <h3 class="headline"><%= @review.headline %></h3>
-<p><%= @review.content %><strong> by <%= link_to @review.reviewer.username, user_path(@review.reviewer) %></strong></p>
+<p><%= @review.content %><strong> by <%= link_to @review.reviewer.username_fancy, user_path(@review.reviewer) %></strong></p>
 
 <% if @errors %>
  <p>Log in to vote!</p>
@@ -16,7 +16,7 @@
     <% end %>
   </li>
 <% elsif current_user %>
-  <li class="red">You found this review helpful!</li>
+  <li class="red">You found this review helpful! <%= " #{Emoji.find_by_alias("thumbsup").raw}" %></li>
 <% end %>
   <li class="blue">
     <%= link_to "Leave a comment", comments_new_path(commentable_type: "Review", commentable_id: @review.id) %>
