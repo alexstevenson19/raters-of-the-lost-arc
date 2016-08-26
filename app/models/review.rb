@@ -10,7 +10,7 @@ class Review < ActiveRecord::Base
 
   def stars_pretty
     star_string = ""
-    self.stars.times { star_string << "*" }
+    self.stars.times { star_string << Emoji.find_by_alias("star").raw }
     return star_string
   end
 

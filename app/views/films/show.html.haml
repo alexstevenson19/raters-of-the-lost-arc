@@ -1,5 +1,6 @@
 %h2= @film.title
-%h3= "Rating: #{@film.calculate_rating} stars"
+%h4= "Average Rating: #{@film.star_display}  #{@film.display_quarter_star}"
+
 
 %ul
   / %li= "Genre: #{@film.genre}"
