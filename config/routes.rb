@@ -39,4 +39,7 @@ Rails.application.routes.draw do
   delete "comments/:id" => "comments#destroy", as: 'comments_destroy'
 
   post 'reviews/:id/votes' => "votes#create", as: 'create_vote'
+
+  post '/search' => "searches#show", as: 'search'
+
 end
