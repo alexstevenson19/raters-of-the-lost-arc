@@ -1,5 +1,4 @@
 / should show username, date, body
 %p= "#{User.find(comment.commenter_id).username} said \"#{comment.body}\" on #{comment.created_at.to_date}"
-- if comment.commenter_id == session[:user_id] || comment.review.reviewer_id
-  / delete button
-%p= button_to "Delete", comments_destroy_path(comment), method: :delete
+- if session[:user_id] && (comment.commenter_id == session[:user_id] || comment.review_comment_author_id == session[:user_id])
+  %p= button_to "Delete", comments_destroy_path(comment), method: :delete

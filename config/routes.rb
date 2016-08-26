@@ -38,5 +38,5 @@ Rails.application.routes.draw do
 
   delete "comments/:id" => "comments#destroy", as: 'comments_destroy'
 
-  post 'reviews/:id/votes' => "votes#create", as: 'create_vote'
+  post 'reviews/:id/votes' => "reviews#create_vote", as: 'create_vote'
 end

@@ -3,43 +3,47 @@
 <head>
   <title>RatersOfTheLostArc</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag    "/stylesheets/normalize" %>
-  <%= stylesheet_link_tag    "/stylesheets/styles" %>
+  <!-- fix link to fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Bungee+Shade|Open+Sans" rel="stylesheet">
+<!-- remove css reference to public folder -->
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="container">
+  <div id="container">
+    <div id="sidebar">
+      <div id="logo">
+        <%= link_to root_path do %>
+          <%= image_tag "cats-at-movies-gray.png" %>
+        <% end %>
+      </div>
 
-  <nav id="nav-bar">
-    <ul id="login-nav">
-      <li><%= link_to "Home", "/" %></li>
-      <% if session[:user_id] %>
-        <li><%= link_to "Logout", "/sessions", method: :delete %></li>
-        <li><%= link_to "Hey #{current_user.username}!", user_path(session[:user_id]) %></li>
-      <% else %>
-        <li><%= link_to "Register", users_new_path %></li>
-        <li><%= link_to "Login", "/sessions/new" %></li>
-      <% end %>
-    </ul><br>
-
-    <div>
-      <img id="cats" src="/cats-at-movies-gray.png">
+      <ul id="nav">
+        <li><%= link_to "Home", "/" %></li>
+        <li><a href="#">Reviews</a></li>
+        <li><a href="#">Films</a></li>
+        <li><a href="#">Genres</a></li>
+        <li><a href="#">Actors</a></li>
+      </ul>
     </div>
-
-    <ul id="other-nav">
-      <li>Reviews</li>
-      <li>Films</li>
-      <li>Genres</li>
-      <li>Actors</li>
-    </ul>
-
-  </nav>
-<div id="main-body">
-  <%= yield %>
-</div>
-
-</div>
+    <div id="main_content">
+      <div id="header">
+        <!-- Add a link to a home page -->
+        <h1 class="main">Raters<br>of the<br>lost arc</h1>
+        <ul id="login">
+          <% if session[:user_id] %>
+            <li><%= link_to "Logout", "/sessions", method: :delete %></li>
+            <li><%= link_to "Hey #{current_user.username}!", user_path(session[:user_id]) %></li>
+          <% else %>
+            <li><%= link_to "Register", users_new_path %></li>
+            <li><%= link_to "Login", "/sessions/new" %></li>
+          <% end %>
+        </ul>
+      </div>
+      <%= yield %>
+    </div>
+    <div id="footer">footer</div>
+  </div>
 
 </body>
 </html>

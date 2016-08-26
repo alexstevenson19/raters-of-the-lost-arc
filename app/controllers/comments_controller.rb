@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     @comment.commenter = User.find(session[:user_id])
     if @comment.save
       if @comment.commentable_type== "Film"
-        redirect_to "/#{@comment.commentable_type.downcase}s/#{@comment.commentable_id}"
+        redirect_to "/films/#{@comment.commentable_id}"
       else
         film_id = Review.find(@comment.commentable_id).reviewable_id
         redirect_to "/films/#{film_id}/reviews/#{@comment.commentable_id}"
@@ -29,10 +29,7 @@ class CommentsController < ApplicationController
     type = comment.commentable_type
     id = comment.commentable_id
     comment.destroy
-    p type
-    p "!!!!!!!!!!!!!!!!!!!!"
     if type == "Review"
-      p "type does indeed equal review"
       reviewable_id = Review.find(id).reviewable_id
       redirect_to "/films/#{reviewable_id}"
     else
