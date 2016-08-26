@@ -1,0 +1,154 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import 'normalize';
+
+html, body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+background: url(bckgrd-bw.jpg);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+  // font-family: 'Bungee Shade';
+}
+h1.main {
+  padding: 0.6em 0;
+  margin: 0;
+  font-family: 'Bungee Shade';
+  font-size: 4em;
+  line-height: 90%;
+  color: #FF0040;
+}
+h2 {
+  // font-weight: 500;
+  font-family: 'Bungee Shade';
+  font-size: 2em;
+}
+a {
+  /*text-decoration: none;*/
+  color: inherit;
+}
+#container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 2%;
+  padding-top: 0;
+  padding-bottom: 0;
+  background: #ffffff;
+  // border: 1px solid red;
+  #sidebar {
+    width: 250px;
+    position: fixed;
+    left: 10%;
+    top: 0;
+    height: 100%;
+    background: #f5f7f9;
+    padding: 16em 0 0 0;
+    font-family: 'Bungee Shade';
+    // border-right: 1px solid #d6dce0;
+    #logo {
+      width: 93%;
+      padding: 8px;
+      position: absolute;
+      right: 0;
+      top: 1em;;
+      background: #ffffff;
+      border: 1px solid #d6dce0;
+      img {
+        // margin: 8px;
+        border: 1px solid #d6dce0;
+        width: 230px;
+        // height: 230px;
+      }
+    }
+    ul {
+      list-style: none;
+      text-align: right;
+      padding-right: 1em;
+      li {
+        padding: .5em 0;
+        font-size: 1.7em;
+        color: #000000;
+        a {
+          color: #FF0040;
+          text-decoration: none;
+          transition: all .4s ease;
+          &:hover {
+            color: #000000;
+          }
+        }
+      }
+      .active {
+        a {
+          color: #33acb7;
+        }
+      }
+    }
+    .sign_in {
+      position: absolute;
+      right: 3em;
+      top: 80%;
+      font-size: .8em;
+      color: #9eafba;
+    }
+  }
+// }
+  #main_content {
+    margin-left: 250px;
+    padding: 0;
+    padding-left: 2%;
+    background: #ffffff;
+    #header {
+      // height: 100px;
+      margin: 0;
+      padding: 0;
+      border-bottom: 1px solid #d6dce0;
+      background: #ffffff;
+      p {
+        display: inline;
+      }
+      a {
+        color: #FF0040;
+        text-decoration: none;
+        &:hover {
+          color: #000000;
+        }
+      }
+      #login {
+        width: auto;
+        position: absolute;
+        right: 4.5em;
+        top: 0.3em;
+        font-family: 'Bungee Shade';
+        font-size: 2em;
+        background: #ffffff;
+        // border: 1px solid blue;
+        list-style-type: none;
+      }
+    }
+    .buttons {
+      float: right;
+      margin-top: -6px;
+      .button {
+        font-size: .8em;
+        margin-left: .5em;
+      }
+    }
+  }
+}
