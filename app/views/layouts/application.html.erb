@@ -23,7 +23,12 @@
         <li><%= link_to "Reviews", review_all_path %></li>
         <li><%= link_to "Films", films_path %></li>
         <li><%= link_to "Genres", genres_path %></li>
-        <li><a href="#">Actors</a></li>
+        <li class="tricky">
+          <a href="#">
+            <span class="actors">Actors</span>&nbsp;
+            <span class="soon">Coming Soon</span>
+          </a>
+        </li>
       </ul>
 
     </div>
@@ -44,7 +49,7 @@
       </div>
       <%= yield %>
     </div>
-    <div id="footer">footer</div>
+    <!-- <div id="footer">footer</div> -->
   </div>
 
 </body>

@@ -1,18 +1,19 @@
 %h2= @film.title
-%h4= "Average Rating: #{@film.star_display}#{@film.display_quarter_star}"
+%p= "Average Rating: #{@film.star_display}#{@film.display_quarter_star}"
 
 
 %ul
   / %li= "Genre: #{@film.genre}"
-  %li= "Released in #{@film.release_year}"
-  %li= @film.description
+  %li= "Release year: #{@film.release_year}"
+  %li= "Description: #{@film.description}"
 
-%h3= "Reviews for #{@film.title}"
+%h2= "Reviews!"
 -if @film.reviews
 
   = render partial: 'reviews/review_list', locals: { film: @film }
 
-%p= link_to "Write a review for #{@film.title}", reviews_new_path
-%p= link_to "Comment on #{@film.title}", comments_new_path(commentable_type: "Film", commentable_id: @film.id)
-- @film.comments.each do |comment|
-  = render '/comments/show', comment: comment
+%ul{:id => "film_menu"}
+  %li{:class => "blue"}= link_to "Write a review", reviews_new_path
+  %li{:class => "blue"}= link_to "Leave a comment", comments_new_path(commentable_type: "Film", commentable_id: @film.id)
+  - @film.comments.each do |comment|
+    = render '/comments/show', comment: comment
