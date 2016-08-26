@@ -2,7 +2,8 @@
 <h3><%= @review.headline %></h3>
 
 <p><%= @review.stars_pretty %></p>
-<p><%= @review.content %><strong> by <%= link_to @review.reviewer.username_fancy, user_path(@review.reviewer) %></strong></p>
+<p><%= @review.content %><strong> </p>
+<p>-- by <%= @review.reviewer.username_fancy %></strong></p>
  <br>
 
 <% if @errors %>
@@ -16,7 +17,7 @@
   <%= f.submit "This review was helpful!" %>
   <% end %>
 <% elsif current_user %>
-  <div>You found this review helpful.</div>
+  <div>You found this review helpful. <%= " #{Emoji.find_by_alias("thumbsup").raw}" %></div>
 <% end %>
 
 
