@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   post "sessions" => "sessions#create"
 
-  delete "sessions" => "sessions#destroy"
+  delete "sessions" => "sessions#destroy", as: 'logout'
 
   # Review
   get "films/:id/reviews/new"  => "reviews#new", as: 'reviews_new'
