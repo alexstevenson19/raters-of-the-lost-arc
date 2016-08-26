@@ -19,7 +19,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    if logged_in? && current_user.id == params[:id]
+      @user = User.find(params[:id])
+      render :show
+    else
+      redirect_to "/"
+    end
+
   end
 
   private
