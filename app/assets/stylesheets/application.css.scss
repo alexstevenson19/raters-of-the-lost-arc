@@ -51,7 +51,8 @@ a {
   padding-top: 0;
   padding-bottom: 0;
   background: #ffffff;
-  // border: 1px solid red;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
   #sidebar {
     width: 250px;
     position: fixed;
@@ -113,6 +114,7 @@ a {
     margin-left: 250px;
     padding: 0;
     padding-left: 2%;
+    padding-top: 2%;
     background: #ffffff;
     #header {
       // height: 100px;
@@ -150,5 +152,8 @@ a {
         margin-left: .5em;
       }
     }
+  }
+  #footer {
+    border: 1px solid red;
   }
 }
