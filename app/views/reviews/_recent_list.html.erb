@@ -1,0 +1,7 @@
+<ul>
+  <% reviews.each do |review| %>
+    <li>
+      <%= render partial: 'reviews/review_details', locals: { film: review.film, review: review } %>
+    </li>
+  <% end %>
+</ul>
