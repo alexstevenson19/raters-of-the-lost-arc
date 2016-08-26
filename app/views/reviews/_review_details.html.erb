@@ -1,3 +1,5 @@
-<h3><%= review.stars_pretty %><%= link_to review.headline, review_path(film, review) %></h3>
+<br>
+<h3><%= link_to review.headline, review_path(film, review) %></h3>
+<p><%= review.stars_pretty %></p>
 <p><%= review.short_content %><%= link_to 'see more', review_path(film, review) %></p>
 

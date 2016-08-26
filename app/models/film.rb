@@ -1,4 +1,5 @@
 class Film < ActiveRecord::Base
+  include EmojiHelper
   has_many :film_genres
   has_many :genres, through: :film_genres
   # has_many :roles
@@ -12,11 +13,41 @@ class Film < ActiveRecord::Base
   validates_format_of :release_year, with: /\A\d{4}\z/, on: :save
 
   def calculate_rating
-    sum = 0
+    sum = 0    
     self.reviews.each do |review|
-      sum += review.stars
-    end
-    average = sum/self.reviews.count
-    return average.floor
+        sum += review.stars
+    end   
+   sum.to_f/self.reviews.count.to_f
   end
+  
+  def half_star(average)
+    return nil if self.reviews.count < 1
+    remainder = (average - average.floor.to_f).to_f
+    if remainder < 0.25
+      return ""
+    elsif remainder < 0.5
+      return "1/4"
+    elsif remainder < 0.75
+      return "2/4"
+    else
+      return "3/4"
+    end
+  end
+
+  def star_display
+    return "No ratings" if self.reviews.count < 1
+    star_num  = calculate_rating
+    star_string = ""
+    star_num.floor.times {star_string << Emoji.find_by_alias("star").raw}
+    star_string
+  end
+
+  def display_quarter_star
+    if calculate_rating == 1
+      return "#{half_star(calculate_rating)} star"
+    else
+      return "#{half_star(calculate_rating)} stars"
+    end  
+  end
+
 end
