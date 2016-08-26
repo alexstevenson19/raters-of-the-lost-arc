@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get "users/:id" => "users#show", as: "user"
 
-  get 'films' => 'films#index'
+  get 'films' => 'films#index', as: "films"
 
   get 'films/:id' => 'films#show', as: 'film'
 
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   get "films/:film_id/reviews/:id" => 'reviews#show', as: "review"
 
   # Genres
-  get 'genres' => 'genres#index'
+  get 'genres' => 'genres#index', as: "genres"
 
   get 'genres/:id' => 'genres#show', as: 'genre'
 
@@ -42,5 +42,7 @@ Rails.application.routes.draw do
   post '/search' => "searches#show", as: 'search'
 
   post 'reviews/:id/votes' => "reviews#create_vote", as: 'create_vote'
+
+  get 'reviews' => "reviews#index", as: "review_all"
 
 end
